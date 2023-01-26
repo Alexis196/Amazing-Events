@@ -7,6 +7,7 @@ header{
     display: flex;
     justify-content: space-between;
     padding: .5rem 2rem;
+    min-height: 10vh;
 }
 header>img{
     width: 130px;
@@ -14,6 +15,9 @@ header>img{
 }
 .navbar a:hover{
     color: rgb(217, 3, 104) !important;
+}
+main{
+    min-height: 80vh;
 }
 .title{
     display: flex;
@@ -69,6 +73,7 @@ h1{
     border: 1px solid #000;
     padding: .5rem;
     background-color: #000;
+    box-shadow: 3px 3px 4px #000;
 }
 h4{
     color: #fff !important;
@@ -109,6 +114,7 @@ footer{
     align-items: center;
     background-color: rgb(0, 0, 0);
     padding: .5rem 2rem;
+    min-height: 10vh;
 }
 footer>p{
     margin: 0 !important;
@@ -172,6 +178,7 @@ td{
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    flex-wrap: wrap;
 }
 .description{
     display: flex;

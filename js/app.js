@@ -1,9 +1,7 @@
 function cards(){
     const cardsHome = document.getElementById("cont-cards")
-    let events = ""
     for (let events of data.events){
-        let divContainer = document.createElement("div")
-        divContainer.innerHTML =
+        cardsHome.innerHTML +=
         `<div class="cards">
             <img src="${events.image}" alt="food-fair">
             <div class="cards-content">
@@ -14,7 +12,6 @@ function cards(){
                 </div>
             </div>
         </div>`
-        cardsHome.appendChild(divContainer)
     }
 }
 cards()

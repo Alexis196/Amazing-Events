@@ -19,3 +19,10 @@ function cards(dato){
     }
 }
 cards(eventos)
+
+
+check.addEventListener('click', (e)=>{
+    if(e.target.localName === 'input'){
+        console.log(e)
+    }
+})

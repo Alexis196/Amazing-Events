@@ -30,7 +30,8 @@ main{
     font-size: 6rem;
 }
 .category{
-    margin: 3rem 1rem 0;
+    width: 90%;
+    margin: 3rem auto 0;
     min-height: 3rem;
     display: flex;
     gap: 1rem;
@@ -42,6 +43,7 @@ main{
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    align-items: center;
 }
 .search{
     display: flex;
@@ -140,7 +142,9 @@ footer{
 }
 form{
     width: 30%;
-    margin: 3rem auto;
+    margin: 3rem 0;
+    display: flex;
+    justify-content: flex-end;
 }
 .send{
     display: flex;

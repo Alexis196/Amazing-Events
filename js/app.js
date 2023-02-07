@@ -3,15 +3,11 @@ const checks = document.getElementById("category-check")
 const category = data.events
 const filterCategories = Array.from( new Set (category.map(cate => cate.category)))
 
-// console.log( [check.children] )
-// for ( let check of checks){
-//     console.log(check)
-// }
-
 
 function cards(e){
+    let aux = ''
     for(let event of e){
-        cardsHome.innerHTML +=
+        aux +=
         `<div class="cards">
             <img src="${event.image}" alt="food-fair">
             <div class="cards-content">
@@ -23,6 +19,7 @@ function cards(e){
             </div>
         </div>`
     }
+    cardsHome.innerHTML = aux
 }
 
 cards(category)
@@ -46,15 +43,14 @@ function createElements(lista, elemento){
 // ------------------------ Events -------------------------
 
 
-// // console.log([checks.children])
-// checks.addEventListener('click',filterCards)
+// console.log([checks.children])
+checks.addEventListener('change',(e)=>{
+    let filtrados = filterCheck(category)
+    cards(filtrados)
+})
 
-// function filterCards(e){
-//     let prueba = []
-//     for( let check of checks.children){
-//         if(check.firstElementChild.checked){
-//             prueba.push(check.firstElementChild.value)
-//         }
-//     }
-//     console.log(prueba)
-// }
+function filterCheck(e){
+    let input = [...document.querySelectorAll('input[type="checkbox"]:checked')].map(input => input.value)
+    if(input.length === 0){ return (e) }
+    return e.filter( inputFiltrado => input.includes(inputFiltrado.category))
+}

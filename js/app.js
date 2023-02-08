@@ -1,7 +1,16 @@
 const cardsHome = document.getElementById("cont-cards")
 const checks = document.getElementById("category-check")
+const buscador = document.getElementById('search')
+const message = document.getElementById('message')
 const category = data.events
 const filterCategories = Array.from( new Set (category.map(cate => cate.category)))
+
+cards(category)
+createElements(filterCategories, checks)
+
+
+// -------------------- Function -----------------------
+
 
 
 function cards(e){
@@ -22,12 +31,6 @@ function cards(e){
     cardsHome.innerHTML = aux
 }
 
-cards(category)
-// -------------------- Create Check and label -----------------------
-
-
-createElements(filterCategories, checks)
-
 function createElements(lista, elemento){
     let input = ''
     lista.forEach(cat =>{
@@ -40,17 +43,33 @@ function createElements(lista, elemento){
     elemento.innerHTML = input
 }
 
+function filterCheck(e){
+    let input = [...document.querySelectorAll('input[type="checkbox"]:checked')].map(input => input.value)
+    if(input.length === 0){ return e }
+    return e.filter( inputFiltrado => input.includes(inputFiltrado.category))
+}
+
+function filterSearch(search, e){
+    let arrayFiltro = e.filter(searchFiltering => searchFiltering.name.toLowerCase().includes(search))
+    if(arrayFiltro.length === 0){
+        return alert('asda')
+    }
+    return arrayFiltro
+}
+
 // ------------------------ Events -------------------------
 
-
-// console.log([checks.children])
 checks.addEventListener('change',(e)=>{
-    let filtrados = filterCheck(category)
+    let search = buscador[0].value.toLowerCase()
+    let functionSearch = filterSearch(search, category)
+    let filtrados = filterCheck(functionSearch)
     cards(filtrados)
 })
 
-function filterCheck(e){
-    let input = [...document.querySelectorAll('input[type="checkbox"]:checked')].map(input => input.value)
-    if(input.length === 0){ return (e) }
-    return e.filter( inputFiltrado => input.includes(inputFiltrado.category))
-}
+buscador.addEventListener('keyup', (e)=>{
+    e.preventDefault()
+    let search = buscador[0].value.toLowerCase()
+    let functionSearch = filterSearch(search, category)
+    let filtrados = filterCheck(functionSearch)
+    cards(filtrados)
+})

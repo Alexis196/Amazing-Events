@@ -12,13 +12,20 @@ createElements(filterCategories, checks)
 // -------------------- Function -----------------------
 
 
-
 function cards(e){
-    let aux = ''
+    if(e.length === 0){
+        cardsHome.innerHTML = `
+        <div class="cont-error">
+            <img class="error-icon" src="../assets/icon/error.png" alt="food-fair">
+            <p class="messege-error">Event not found</p>
+        </div>
+        `
+    }else{
+        let aux = ''
     for(let event of e){
         aux +=
         `<div class="cards">
-            <img src="${event.image}" alt="food-fair">
+            <img src="${event.image}" alt="${event.name}">
             <div class="cards-content">
                 <h4 id="title-h4">${event.name}</h4>
             <div class="price-button">
@@ -29,7 +36,9 @@ function cards(e){
         </div>`
     }
     cardsHome.innerHTML = aux
+    }
 }
+
 
 function createElements(lista, elemento){
     let input = ''
@@ -51,9 +60,6 @@ function filterCheck(e){
 
 function filterSearch(search, e){
     let arrayFiltro = e.filter(searchFiltering => searchFiltering.name.toLowerCase().includes(search))
-    if(arrayFiltro.length === 0){
-        return alert('asda')
-    }
     return arrayFiltro
 }
 

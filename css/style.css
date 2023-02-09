@@ -186,15 +186,27 @@ td{
     flex-wrap: wrap;
 }
 .image-detail{
-    width: 40%;
+    width: 35%;
 }
 .img-dt{
     width: 100%;
 }
 .description{
-    width: auto;
+    width: 50%;
     display: flex;
     flex-direction: column;
+}
+.cont-error{
+    display: flex;
+    gap: 1rem
+}
+.error-icon{
+    width: 64px;
+    height: 64px;
+}
+.messege-error{
+    font-size: 2rem;
+    color: #adadad;
 }
 @media (min-width: 320px) and (max-width: 425px){
     #title-primary{

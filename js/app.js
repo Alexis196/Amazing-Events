@@ -23,7 +23,7 @@ function cards(e){
                 <h4 id="title-h4">${event.name}</h4>
             <div class="price-button">
                 <p>Price: ${event.price}</p>
-                <a class="button-details" href="./html/details.html">Details</a>
+                <a class="button-details" href="./html/details.html?id=${event._id}">Details</a>
                 </div>
             </div>
         </div>`

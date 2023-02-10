@@ -79,3 +79,7 @@ buscador.addEventListener('keyup', (e)=>{
     let filtrados = filterCheck(functionSearch)
     cards(filtrados)
 })
+
+buscador.addEventListener('submit', (e)=>{
+    e.preventDefault()
+})

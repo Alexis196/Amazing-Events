@@ -82,3 +82,6 @@ buscador.addEventListener('keyup', (e)=>{
     cards(filtrados)
 })
 
+buscador.addEventListener('submit', (e)=>{
+    e.preventDefault()
+})

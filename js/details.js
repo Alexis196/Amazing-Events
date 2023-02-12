@@ -4,7 +4,6 @@ const params = new URLSearchParams(querySearch)
 const id = params.get("id")
 const evento = eventosId.find( evento => evento._id == id)
 
-
 const boxDetail = document.getElementById('box-detail')
 
 createDetail(evento, boxDetail)

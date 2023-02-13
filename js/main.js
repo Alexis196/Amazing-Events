@@ -17,7 +17,6 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing')
         const filterCategories = data.events.map(cate => cate.category)
         const filterCategories2 = [...new Set (filterCategories)]
         printCheck(filterCategories2, checks)
-        
     })
     .catch(error => error)
 

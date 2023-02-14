@@ -86,9 +86,7 @@ export function createCardPU(event){
 export function loopListUp(list){
     let aux = ''
     list.forEach(event =>{
-        if(event.date > data.currentDate){
-            aux += createCardPU(event)
-        }
+        aux += createCardPU(event)
     })
     return aux
 }
@@ -100,13 +98,30 @@ export function printCardUp(list, element){
 export function loopListPast(list){
     let aux = ''
     list.forEach(event =>{
-        if(event.date < data.currentDate){
-            aux += createCardPU(event)
-        }
+        aux += createCardPU(event)
     })
     return aux
 }
 
 export function printCardPast(list, element){
     element.innerHTML = loopListPast(list)
+}
+
+export function createDetail (lista, elemento){
+    elemento.innerHTML = 
+    `<div class="image-detail">
+        <img class="img-dt" src="${lista.image}" alt="${lista.name}">
+    </div>
+    <section class="description">
+        <h3>${lista.name}</h3>
+            <dl>
+                <ddd>date: <span>${lista.date}</span></ddd>
+                <dd>description: <span>${lista.description}</span></dd>
+                <dd>category: <span>${lista.category}</span></dd>
+                <dd>place: <span>${lista.place}</span></dd>
+                <dd>capacity: <span>${lista.capacity}</span></dd>
+                <dd>assistance: <span>${lista.assistance}</span></dd>
+                <dd>price: <span>${lista.price}</span></dd>
+            </dl>
+    </section>`
 }

@@ -159,9 +159,9 @@ export function maxAttendance(events) {
         }
     }
     return highestEvent
-  }
-  
-  export function lowAttendance(events) {
+}
+
+export function lowAttendance(events) {
     let lowest = 0
     let lowestEvent
     for (let event of events) {
@@ -172,9 +172,9 @@ export function maxAttendance(events) {
         }
     }
     return lowestEvent;
-  }
-  
-  export function maxCapacity(events) {
+}
+
+export function maxCapacity(events) {
     let larger = 0;
     let largerCapacityEvent;
     for (let event of events) {
@@ -184,9 +184,9 @@ export function maxAttendance(events) {
         }
     }
     return largerCapacityEvent;
-  }
-  
-  export function upcomingEventsStatistics(events) {
+}
+
+export function upcomingEventsStatistics(events) {
     let upcomingStatistics = []; 
     let upcomingCategories = Array.from(new Set(events.map(event => event.category)))
   
@@ -219,10 +219,10 @@ export function maxAttendance(events) {
   
     upcomingStatistics.push(upcomingCategories, upcomingRevenues, upcomingAttendance)
     return upcomingStatistics;
-  }
-  
-  
-  export function pastEventsStatistics(events) {
+}
+
+
+export function pastEventsStatistics(events) {
     let pastStatistics = [];
     let pastCategories = Array.from(new Set(events.map(event => event.category))) 
   
@@ -255,5 +255,4 @@ export function maxAttendance(events) {
   
     pastStatistics.push(pastCategories, pastRevenues, pastPercentageOfAttendance)
     return pastStatistics;
-  }
-  
+}

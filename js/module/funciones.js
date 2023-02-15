@@ -125,3 +125,135 @@ export function createDetail (lista, elemento){
             </dl>
     </section>`
 }
+
+// ---------- Stats-----------
+
+export function filterUpcoming(events, date) {
+    let upcomingFilter = []
+    for (let event of events) {
+        if (date < event.date) {
+            upcomingFilter.push(event)
+        }
+    }
+    return upcomingFilter
+}
+
+export function filterPast(events, date) {
+    let pastEvents = []
+    for (let event of events) {
+        if (date > event.date) {
+            pastEvents.push(event)
+        }
+    }
+    return pastEvents
+}
+
+export function maxAttendance(events) {
+    let highest = 0
+    let highestEvent
+    for (let event of events) {
+        let percentageOfAttendance = (event.assistance * 100) / event.capacity
+        if (highest === 0 || percentageOfAttendance > highest) {
+            highest = percentageOfAttendance
+            highestEvent = event
+        }
+    }
+    return highestEvent
+  }
+  
+  export function lowAttendance(events) {
+    let lowest = 0
+    let lowestEvent
+    for (let event of events) {
+        let percentageOfAttendance = (event.assistance * 100) / event.capacity
+        if (lowest === 0 || percentageOfAttendance < lowest) {
+            lowest = percentageOfAttendance
+            lowestEvent = event
+        }
+    }
+    return lowestEvent;
+  }
+  
+  export function maxCapacity(events) {
+    let larger = 0;
+    let largerCapacityEvent;
+    for (let event of events) {
+        if (larger === 0 || event.capacity > larger) {
+            larger = event.capacity
+            largerCapacityEvent = event
+        }
+    }
+    return largerCapacityEvent;
+  }
+  
+  export function upcomingEventsStatistics(events) {
+    let upcomingStatistics = []; 
+    let upcomingCategories = Array.from(new Set(events.map(event => event.category)))
+  
+  
+    let upcomingRevenues = [];
+    for (let category of upcomingCategories) {
+        let cont = 0;
+        for (let event of events) {
+            if (event.category === category) {
+              cont += event.estimate * event.price
+            }
+        }
+        upcomingRevenues.push(cont);
+    }
+  
+  
+    let upcomingAttendance = [];
+    for (let category of upcomingCategories) {
+        let estimateAttendance = 0;
+        let capacity = 0;
+        for (let event of events) {
+            if (event.category === category) {
+                estimateAttendance += event.estimate
+                capacity += event.capacity
+            }
+        }
+        upcomingAttendance.push((estimateAttendance * 100) / capacity)
+    }
+  
+  
+    upcomingStatistics.push(upcomingCategories, upcomingRevenues, upcomingAttendance)
+    return upcomingStatistics;
+  }
+  
+  
+  export function pastEventsStatistics(events) {
+    let pastStatistics = [];
+    let pastCategories = Array.from(new Set(events.map(event => event.category))) 
+  
+  
+    let pastRevenues = [];
+    for (let category of pastCategories) {
+        let revenueCont = 0
+        for (let event of events) {
+            if (event.category === category) {
+                revenueCont += event.assistance * event.price
+            }
+        }
+        pastRevenues.push(revenueCont);
+    }
+  
+  
+    let pastPercentageOfAttendance = []; 
+    for (let category of pastCategories) {
+        let assistance = 0;
+        let capacity = 0;
+        for (let event of events) {
+            if (event.category === category) {
+                assistance += event.assistance
+                capacity += event.capacity
+            }
+        }
+        pastPercentageOfAttendance.push((assistance * 100) / capacity);
+    }
+  
+  
+    pastStatistics.push(pastCategories, pastRevenues, pastPercentageOfAttendance)
+    return pastStatistics;
+  }
+  

@@ -160,15 +160,18 @@ form{
 table{
     width: 80%;
     margin: 2rem auto;
-    color: #fff;
+    color: #5e5d5d;
+    text-align: center;
 }
 table, tr, th, td{
     border: 1px solid #000 !important;
     border-collapse: collapse;
 }
+th{
+    background-color: rgba(241, 91, 161, 0.702);
+}
 .titles-table{
     height: 2rem;
-    background-color: rgba(217, 3, 103, 0.702);
 }
 td{
     background-color: rgb(241, 181, 209);
